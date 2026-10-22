@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class eliminar {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int[] array = {2,5,6,9,1};
+        int[] array = {2,5,0,9,1};
         System.out.println("Indique la posicion del numero que desea eliminar del array");
         int posicion = input.nextInt();
         array[posicion]=0;
