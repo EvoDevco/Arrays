@@ -22,17 +22,18 @@ public class EstacionMeteorologica {
         int pos_min =0;
         int pos_max =0;
         double salto =0;
-        String caracter = "▋";
+        String caracter = "▮";
         String color = "";
         int longitudReferencia = 12;
+        // LA FILA DE VARIABLES.
         for (int posicion=1;posicion<=dias.length;posicion++) {
             System.out.print("Indique las temperatura del dia " + dias[posicion - 1] + " ");
-            temperatura= input.nextDouble();
+            temperatura= input.nextDouble(); // Asignación del valor de Temperatura.
             if (temperatura<-30|temperatura>50){
                 do {
                     System.out.print("El valor de temperatura NO es valido, por favor cambialo.");
                     temperatura = input.nextFloat();
-                }while (temperatura<-30|temperatura>50);
+                }while (temperatura<-30|temperatura>50); // Si no lo pones bien no continuamos.
             }
             temperaturas[posicion-1]=temperatura;
             suma+=temperaturas[posicion-1];
@@ -45,16 +46,17 @@ public class EstacionMeteorologica {
                 maximo = temperatura;
                 pos_max = posicion-1;
             }
-
+            // Asignación de maximo y minimo junto a los días que les corresponden.
         }
         double media = suma/7;
         System.out.printf("La temperatura media de la semana es: %.2f ",media   );
         System.out.println("La temperatura minima fue en : " + minimo + " y transcurrio el dia: " + dias[pos_min]);
         System.out.println("La temperatura minima fue en : " + maximo + " y transcurrio el dia: " + dias[pos_max]);
         System.out.print("Los dias de la semana que fueron superiores a la media fueron: ");
+        //Primera tanda de impresiones.
         for (int saltos=1;saltos<=dias.length;saltos++){
             if (temperaturas[saltos-1]>media){
-                System.out.print(dias[saltos-1] + ", ");
+                System.out.print(dias[saltos-1] + ", ");//En vez de guardar en un array e imprimir podemos simplemente hacer la impresion normal..
             }
         }
         for (int comparaciones = 1; comparaciones<=dias.length-1;comparaciones++){
@@ -64,12 +66,15 @@ public class EstacionMeteorologica {
                 diferencia[1]=dias[comparaciones];
             }
         }
+        //Primera tanda de impresiones.
         System.out.println("El salto mas grande de temperatura fue de : " + salto + " grados. Ocurrio entre los dias : " + diferencia[0] + " y " + diferencia[1]);
         for (int i = 0; i < dias.length; i++) {
             int espaciosNecesarios = longitudReferencia - dias[i].length();
             String espaciosAlineacion = " ".repeat(espaciosNecesarios);
+            caracter = "▮";
             if (temperaturas[i]<0){
                 color = C;
+                caracter = "▯";
             } else if (temperaturas[i] >=0 && temperaturas[i] <=9) {
                 color = CC;
             }else if (temperaturas[i] >=10 && temperaturas[i] <=19) {
