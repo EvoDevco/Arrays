@@ -95,6 +95,7 @@ public class Ahorcado {
             }
         }
             if (Arrays.equals(palabra_adivina, palabra_seleccionada)){
+                System.out.println(palabra_seleccionada);
                 System.out.println("Felicitaciones has ganado");
             }
         }
